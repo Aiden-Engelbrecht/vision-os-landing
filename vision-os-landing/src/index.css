@@ -1,25 +1,39 @@
 /* src/index.css */
-:root {
-  /* Dark Theme (Hero) */
-  --bg-color: #05140E; 
-  --text-main: #F9F9F8;
-  --text-muted: #8EA599;
-  --border-color: rgba(255, 255, 255, 0.1);
 
-  /* Light Theme (Rest of Page) */
-  --bg-light: #F4F1EB;
-  --bg-light-alt: #EBE7DF;
-  --text-dark: #1A2E25;
-  --text-muted-dark: #5A6E63;
-  --border-dark: rgba(26, 46, 37, 0.1);
-  
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Merriweather', 'Georgia', serif;
+:root {
+  /* Dark theme */
+  --bg-color: #05140e;
+  --text-main: #f9f9f8;
+  --text-muted: #8ea599;
+  --border-color:
+    rgba(255, 255, 255, 0.1);
+
+  /* Light theme */
+  --bg-light: #f4f1eb;
+  --bg-light-alt: #ebe7df;
+  --text-dark: #1a2e25;
+  --text-muted-dark: #5a6e63;
+  --border-dark:
+    rgba(26, 46, 37, 0.1);
+
+  --font-sans:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+
+  --font-serif:
+    'Merriweather',
+    'Georgia',
+    serif;
+
+  --navigation-height: 72px;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+  scroll-padding-top:
+    var(--navigation-height);
 }
 
 * {
@@ -29,15 +43,21 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-light);
+  font-family:
+    var(--font-sans);
+  background-color:
+    var(--bg-light);
   color: var(--text-dark);
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing:
+    antialiased;
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -54,19 +74,24 @@ button {
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 .nav-link {
-  transition: color 0.2s;
+  transition:
+    color 0.2s ease;
 }
 
-/* --- Hero Section & Canvas --- */
+/* ============================================================
+ * Hero
+ * ========================================================== */
 
 .hero-wrapper {
-  background-color: var(--bg-color);
+  background-color:
+    var(--bg-color);
   color: var(--text-main);
 }
 
@@ -82,8 +107,7 @@ button {
 
 .hero-canvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -94,58 +118,104 @@ button {
   position: relative;
   z-index: 10;
   display: grid;
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns:
+    1fr 1fr;
   width: 100%;
   align-items: center;
 }
 
 .hero-text {
   max-width: 600px;
-  text-align: left;
   min-width: 0;
+  text-align: left;
 }
 
-/* --- Rest of the Page (Light Theme) --- */
+/* ============================================================
+ * Page sections
+ * ========================================================== */
 
 .section-light {
-  background-color: var(--bg-light);
-  border-top: 1px solid var(--border-dark);
+  background-color:
+    var(--bg-light);
+  border-top:
+    1px solid
+    var(--border-dark);
   color: var(--text-dark);
 }
 
 .section-alt {
-  background-color: var(--bg-light-alt);
-  border-top: 1px solid var(--border-dark);
+  background-color:
+    var(--bg-light-alt);
+  border-top:
+    1px solid
+    var(--border-dark);
   color: var(--text-dark);
 }
 
-.card-light {
-  background: #FFFFFF;
-  border: 1px solid var(--border-dark);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+/*
+ * Each main anchor section fills at least the visible area below
+ * the fixed navigation. This prevents the next section from
+ * appearing at the bottom after selecting a navigation link.
+ */
+#about,
+#benefits,
+#vision,
+#access {
+  min-height:
+    calc(
+      100vh -
+      var(--navigation-height)
+    );
+
+  min-height:
+    calc(
+      100dvh -
+      var(--navigation-height)
+    );
 }
 
-/* Responsive Layouts */
+.card-light {
+  background: #ffffff;
+  border:
+    1px solid
+    var(--border-dark);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 20px
+    rgba(0, 0, 0, 0.02);
+}
+
+/* ============================================================
+ * Section layouts
+ * ========================================================== */
+
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:
+    1fr 1fr;
   gap: 80px;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(300px, 1fr)
+    );
   gap: 32px;
 }
 
 .vision-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3, 1fr);
   gap: 24px;
 }
 
-/* --- Mobile Menu Styles --- */
+/* ============================================================
+ * Mobile menu
+ * ========================================================== */
 
 .mobile-menu-btn {
   display: none;
@@ -157,23 +227,33 @@ button {
 }
 
 .mobile-menu-overlay {
-  position: absolute;
-  top: 72px;
+  position: fixed;
+  top:
+    var(--navigation-height);
   left: 0;
   width: 100%;
-  background: rgba(5, 20, 14, 0.98);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
+  background:
+    rgba(5, 20, 14, 0.98);
+  backdrop-filter:
+    blur(10px);
+  border-bottom:
+    1px solid
+    var(--border-color);
   display: flex;
   flex-direction: column;
   padding: 24px;
   gap: 16px;
   z-index: 40;
-  
-  transform: translateY(-10px);
+
+  transform:
+    translateY(-10px);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.25s ease-in-out;
+
+  transition:
+    transform 0.25s ease-in-out,
+    opacity 0.25s ease-in-out,
+    visibility 0.25s ease-in-out;
 }
 
 .mobile-menu-overlay.is-open {
@@ -186,9 +266,12 @@ button {
   color: var(--text-main);
   font-size: 20px;
   font-weight: 500;
-  font-family: var(--font-serif);
+  font-family:
+    var(--font-serif);
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.05);
 }
 
 .mobile-menu-overlay a:last-child {
@@ -196,18 +279,20 @@ button {
   padding-bottom: 0;
 }
 
-/* --- Mobile Responsiveness --- */
+/* ============================================================
+ * Responsive layout
+ * ========================================================== */
 
 @media (max-width: 900px) {
   .hero-section {
-    align-items: flex-end; /* Push content to the bottom */
+    align-items: flex-end;
     padding-bottom: 40px;
   }
 
   .hero-layout {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
-  
+
   .hero-text {
     text-align: center;
     margin: 0 auto;
@@ -217,14 +302,18 @@ button {
   }
 
   .hero-text h1 {
-    font-size: 36px !important;
+    font-size:
+      36px !important;
     word-wrap: break-word;
-    margin-bottom: 16px !important;
+    margin-bottom:
+      16px !important;
   }
 
   .hero-text p {
-    font-size: 15px !important;
-    margin-bottom: 24px !important;
+    font-size:
+      15px !important;
+    margin-bottom:
+      24px !important;
   }
 
   .about-grid {
@@ -245,8 +334,23 @@ button {
   .mobile-menu-btn {
     display: block;
   }
-  
-  .section-light, .section-alt, #access {
-    padding: 80px 0 !important;
+
+  /*
+   * Let content determine section height on small screens.
+   * Forced viewport heights can create unnecessary empty space
+   * after vertically stacked mobile content.
+   */
+  #about,
+  #benefits,
+  #vision,
+  #access {
+    min-height: auto;
+  }
+
+  .section-light,
+  .section-alt,
+  #access {
+    padding:
+      80px 0 !important;
   }
 }
